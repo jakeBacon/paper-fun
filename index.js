@@ -10,7 +10,25 @@ var redCheese = new CompoundPath({
       from: [250, 30],
       through: [251, 30],
       to: [425, 375],
-      fillColor: 'red'
+    }),
+    new Path({
+      segments: [
+        [250, 250],
+        [250, 30],
+        [425, 375]
+      ],
+      closed: true
+    })
+  ],
+  fillColor: 'lightblue'
+});
+
+var maskCircle = new CompoundPath({
+  children: [
+    new Path.Arc({
+      from: [250, 30],
+      through: [251, 30],
+      to: [425, 375],
     }),
     new Path({
       segments: [
@@ -24,42 +42,20 @@ var redCheese = new CompoundPath({
   fillColor: 'red'
 });
 
-var maskCircle = new Path.Circle({
-  center: [250, 250],
-  radius: 230,
-  fillColor: 'lightblue'
-});
-
 var mask = new Group(redCheese, maskCircle);
 mask.clipped = true;
 
-/*var maskTriangle = new Path({
-  segments: [
-    [250, 250],
-    [250, 30],
-    [425, 375]
-  ],
-  fillColor: 'blue',
-  closed: true
+var testSquare = new Path.Rectangle({
+  size: [100, 100],
+  position: view.center,
+  fillColor: 'red',
 });
 
-var maskArc = new Path.Arc({
-  from: [249, 30],
-  through: [200, 30],
-  to: [424, 375],
-  fillColor: 'lightblue'
-});*/
-//var mask = new Group(maskTriangle, maskArc);
-
-// ['unite', 'intersect', 'subtract', 'exclude', 'divide']
-
 setTimeout(function () {
-  redCheese.tweenTo(
+  testSquare.tween(
+    { rotation: 0 },
+    { rotation: 45 },
     {
-      rotation: 180
-    },
-    {
-      easing: 'easeInOutCubic',
       duration: 1000
     }
   );
