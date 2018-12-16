@@ -1,0 +1,9 @@
+body {
+  background-color: gray;
+  margin: auto;
+}
+
+#myCanvas {
+  width: 100vw;
+  height: 100vh;
+}
